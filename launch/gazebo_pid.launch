@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<launch>
+	<!-- launch the world and launch the husky to be controlled -->
+	<arg name="world_name" default="$(find gazebo_pid)/worlds/singlePillar.world"/>
+	<arg name="laser_enabled" default="true"/>
+	<arg name="kinect_enabled" default="false"/>
+
+	<include file="$(find gazebo_ros)/launch/empty_world.launch">
+		<arg name="world_name" value="$(arg world_name)"/>
+	</include>
+
+	<include file="$(find husky_gazebo)/launch/spawn_husky.launch">
+		<arg name="laser_enabled" value="$(arg laser_enabled)"/>
+		<arg name="kinect_enabled" value="$(arg kinect_enabled)"/>
+	</include>
+
+	<node pkg ="gazebo_pid" type="gazebo_pid_node" name="pid_control_node" output="screen" launch-prefix="gnome-terminal --command">
+		<rosparam command="load" file="$(find gazebo_pid)/config/config.yaml"/>
+	</node>
+
+
+	<!-- Launch the PID algorithm node here when ready. -->
+</launch>
