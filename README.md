@@ -1,13 +1,13 @@
-# **Simulation of PID controller on Gazebo ROS using Husky robot**
+# **PID controller on Gazebo ROS using Husky robot**
 
 ### Objective
 This project is to use PID controller to control the motion of robot in a virtual environment to understand how PID works. The husky robot can be controlled through two input commands - forward/backward motion and steering motion. The simulation world consists of 1 pillar which is our target destination.
 
 The scripts are written in C++.
 
-### Parameters of PID controller
 
-**Description of PID values in PID control**
+
+### PID controller Descriptions
 
 * **P** (proportional) accounts for present values of the error. For example, if the error is large and positive, 
 the control output will also be large and positive.
@@ -18,7 +18,7 @@ applying a stronger action.
 
 * **D** (differential) accounts for possible future trends of the error, based on its current rate of change.
 
-**Parameters**
+### Parameters of PID controller
 
 * PID parameters used for **forward/backward motion** is stored in config.yaml: 
 
